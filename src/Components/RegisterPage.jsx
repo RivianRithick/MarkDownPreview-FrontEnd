@@ -35,7 +35,7 @@ const Registerpage = () => {
     try {
       // If user doesn't exist, proceed with registration
       const registerRes = await axios.post(
-        "http://localhost:4000/api/user/register",
+        "https://markdownpreview-backend.onrender.com/api/user/register",
         values
       );
       setResponseMsg(registerRes.data.message);

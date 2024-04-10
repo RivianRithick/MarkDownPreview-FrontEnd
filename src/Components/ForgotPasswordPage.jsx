@@ -21,7 +21,7 @@ const ForgotPasswordPage = () => {
   const onSubmit = async (values) => {
     try {
       const res = await axios.post(
-        "http://localhost:4000/api/user/forgotpassword",
+        "https://markdownpreview-backend.onrender.com/api/user/forgotpassword",
         values
       );
 
