@@ -83,7 +83,6 @@ const ForgotPasswordPage = () => {
                 password reset link to your email.
               </p>
             </div>
-            <img src="/forgot.svg" class="image" alt="" />
           </div>
         </div>
       </div>

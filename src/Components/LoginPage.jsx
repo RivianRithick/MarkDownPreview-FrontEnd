@@ -6,11 +6,19 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "./Style/Form.css";
 
-const LoginPage = ({ SetUserName, SetEmail, SetToken }) => {
+const LoginPage = ({
+  SetUserName,
+  SetEmail,
+  SetToken,
+  newMarkdownContent,
+  setNewMarkdownContent,
+}) => {
   const [responseMsg, setResponseMsg] = useState("");
   const navigate = useNavigate();
 
-  // formik
+   const markdownData = setNewMarkdownContent;
+
+
   const initialValues = { email: "", password: "" };
 
   const validationSchema = Yup.object({
@@ -27,7 +35,8 @@ const LoginPage = ({ SetUserName, SetEmail, SetToken }) => {
         "http://localhost:4000/api/user/login",
         values
       );
-
+      //
+      setNewMarkdownContent(res.data.content);
       setResponseMsg(res.data.message);
       SetUserName(res.data.data.lastname);
       SetEmail(values.email);
@@ -111,7 +120,6 @@ const LoginPage = ({ SetUserName, SetEmail, SetToken }) => {
               Sign up
             </button>
           </div>
-          <img src="/log.svg" class="image" alt="" />
         </div>
       </div>
     </div>

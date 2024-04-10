@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from "axios";
 import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
@@ -10,25 +9,18 @@ import LoginPage from './Components/LoginPage'
 import HomePage from './Components/HomePage'
 import NavBar from './Components/Navbar';
 import CreateMarkdown from './Components/CreateMarkDown';
-import MarkDownList from './Components/MarkDownList';
-import Chart from './Components/Chart';
+
+
 
 const App = () => {
   const [token, setToken] = useState(localStorage.getItem('token') || '');
   const [username, setUsername] = useState(localStorage.getItem('username') || '');
   const [email, setEmail] = useState(localStorage.getItem('email') || '');
   const [markdownList, setMarkdownList] = useState([]);
+  const [newMarkdownContent, setNewMarkdownContent] = useState("# Markdown Viewer");
 
 
   useEffect(() => {
-    axios
-      .get("http://localhost:4000/api/user/markdown-list")
-      .then((response) => {
-        setMarkdownList(response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching Markdown list:", error);
-      });
     localStorage.setItem('token', token);
     localStorage.setItem('username', username);
     localStorage.setItem('email', email);
@@ -43,6 +35,8 @@ const App = () => {
             path="/login"
             element={
               <LoginPage
+                newMarkdownContent={newMarkdownContent}
+                setNewMarkdownContent={setNewMarkdownContent}
                 SetUserName={setUsername}
                 SetEmail={setEmail}
                 SetToken={setToken}
@@ -64,32 +58,14 @@ const App = () => {
             path="/create"
             element={
               <>
-                <NavBar />
+                <NavBar
+                  newMarkdownContent={newMarkdownContent}
+                  setNewMarkdownContent={setNewMarkdownContent}
+                />
                 <CreateMarkdown
-                  markdownList={markdownList}
-                  setMarkdownList={setMarkdownList}
+                  newMarkdownContent={newMarkdownContent}
+                  setNewMarkdownContent={setNewMarkdownContent}
                 />
-              </>
-            }
-          />
-          <Route
-            path="/list"
-            element={
-              <>
-                <NavBar />
-                <MarkDownList
-                  markdownList={markdownList}
-                  setMarkdownList={setMarkdownList}
-                />
-              </>
-            }
-          />
-          <Route
-            path="/chart"
-            element={
-              <>
-                <NavBar />
-                <Chart />
               </>
             }
           />

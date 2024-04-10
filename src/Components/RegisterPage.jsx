@@ -151,7 +151,6 @@ const Registerpage = () => {
                 Sign in
               </button>
             </div>
-            <img src="/register.svg" class="image" alt="" />
           </div>
         </div>
       </div>

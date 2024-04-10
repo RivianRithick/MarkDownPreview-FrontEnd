@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-const NavBar = () => {
+const NavBar = ({ newMarkdownContent, setNewMarkdownContent }) => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -9,16 +9,11 @@ const NavBar = () => {
     localStorage.removeItem("username");
     localStorage.removeItem("email");
     navigate("/login");
-    };
-    const handlesubmit = () => {
-      navigate("/create");
-    };
-    const handleView = () => {
-      navigate("/list");
-    };
-    const handleChart = () => {
-      navigate("/chart");
-    };
+  };
+  const handlesubmit = () => {
+    navigate("/create");
+  };
+
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
@@ -47,20 +42,6 @@ const NavBar = () => {
               onClick={handlesubmit}
             >
               Create MarkDown
-            </button>
-            <button
-              className="btn btn-primary mx-3"
-              style={{ width: "auto" }}
-              onClick={handleView}
-            >
-              MarkDown List
-            </button>
-            <button
-              className="btn btn-primary mx-4"
-              style={{ width: "auto" }}
-              onClick={handleChart}
-            >
-              Chart List
             </button>
           </div>
           <button
