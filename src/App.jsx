@@ -9,6 +9,7 @@ import LoginPage from "./Components/LoginPage";
 import HomePage from "./Components/HomePage";
 import NavBar from "./Components/Navbar";
 import CreateMarkdown from "./Components/CreateMarkDown";
+import Chart from "./Components/Chart";
 
 const App = () => {
   const [token, setToken] = useState(localStorage.getItem("token") || "");
@@ -32,6 +33,14 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Registerpage />} />
           <Route
+            path="/chart"
+            element={
+              <>
+                <NavBar /> <Chart />
+              </>
+            }
+          />
+          <Route
             path="/login"
             element={
               <LoginPage
@@ -44,10 +53,7 @@ const App = () => {
             }
           />
           <Route path="/forgot" element={<ForgotPasswordPage />} />
-          <Route
-            path="/resetpassword"
-            element={<ResetPasswordPage />}
-          />
+          <Route path="/resetpassword" element={<ResetPasswordPage />} />
           <Route
             path="/home"
             element={

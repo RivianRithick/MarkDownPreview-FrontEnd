@@ -13,6 +13,9 @@ const NavBar = ({ newMarkdownContent, setNewMarkdownContent }) => {
   const handlesubmit = () => {
     navigate("/create");
   };
+  const chartsubmit = () => {
+    navigate("/chart")
+  }
 
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -42,6 +45,13 @@ const NavBar = ({ newMarkdownContent, setNewMarkdownContent }) => {
               onClick={handlesubmit}
             >
               Create MarkDown
+            </button>
+            <button
+              className="btn btn-primary mx-3 "
+              style={{ width: "auto" }}
+              onClick={chartsubmit}
+            >
+              Chart
             </button>
           </div>
           <button
