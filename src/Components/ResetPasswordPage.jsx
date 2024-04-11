@@ -122,7 +122,6 @@ const ResetPasswordPage = () => {
               <h3>Set Password</h3>
               <p>Set a new password for your account.</p>
             </div>
-            <img src="/reset.svg" class="image" alt="" />
           </div>
         </div>
       </div>

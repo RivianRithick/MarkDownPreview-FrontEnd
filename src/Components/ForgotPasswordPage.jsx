@@ -41,12 +41,6 @@ const ForgotPasswordPage = () => {
     validationSchema,
     onSubmit,
   });
-  const handleClick = () => {
-    navigate("/login");
-  };
-  const SignupClick = () => {
-    navigate("/");
-  };
   return (
     <div class="container ">
       <div className="forms-container">
