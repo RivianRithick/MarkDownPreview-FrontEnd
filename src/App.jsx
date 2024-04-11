@@ -45,7 +45,7 @@ const App = () => {
           />
           <Route path="/forgot" element={<ForgotPasswordPage />} />
           <Route
-            path="/resetpassword/:token/:email"
+            path="/resetpassword"
             element={<ResetPasswordPage />}
           />
           <Route
