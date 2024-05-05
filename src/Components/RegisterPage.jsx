@@ -7,6 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "./Style/Form.css";
 
 const Registerpage = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const [responseMsg, setResponseMsg] = useState("");
   const navigate = useNavigate();
   const initialValues = {
@@ -33,6 +34,7 @@ const Registerpage = () => {
   const onSubmit = async (values) => {
     console.log("Register Api Payloads", values);
     try {
+      setIsLoading(true);
       // If user doesn't exist, proceed with registration
       const registerRes = await axios.post(
         "https://markdownpreview-backend.onrender.com/api/user/register",
@@ -52,6 +54,9 @@ const Registerpage = () => {
       } else {
         console.log("Error", err.message);
       }
+    }
+    finally {
+      setIsLoading(false);
     }
   };
 
@@ -133,7 +138,7 @@ const Registerpage = () => {
                 </div>
               </div>
               <button type="submit" className="btn btn-primary">
-                Register
+                {isLoading ? "Registering..." : "Register"}
               </button>
             </form>
           </div>
@@ -141,6 +146,8 @@ const Registerpage = () => {
         <div class="panels-container">
           <div class="panel left-panel">
             <div class="content">
+              <h1>Welcome To Markdown Preview</h1>
+              <br />
               <h3>Already Registered?</h3>
               <br />
               <button

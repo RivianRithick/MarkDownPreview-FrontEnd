@@ -19,7 +19,7 @@ const App = () => {
   const [email, setEmail] = useState(localStorage.getItem("email") || "");
   const [markdownList, setMarkdownList] = useState([]);
   const [newMarkdownContent, setNewMarkdownContent] =
-    useState("# Markdown Viewer");
+    useState("# Markdown Editor");
 
   useEffect(() => {
     localStorage.setItem("token", token);

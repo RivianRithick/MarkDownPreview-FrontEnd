@@ -10,9 +10,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@mui/material": "^5.15.16",
     "axios": "^1.6.8",
     "chartjs": "^0.3.24",
+    "file-saver": "^2.0.5",
     "formik": "^2.4.5",
+    "markdown-it": "^14.1.0",
+    "marked": "^12.0.2",
     "react": "^18.2.0",
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",

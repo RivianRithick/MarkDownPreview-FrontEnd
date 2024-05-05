@@ -3,6 +3,7 @@ import axios from "axios";
 import ReactMarkdown from "react-markdown";
 import './Style/CreateMarkDown.css'
 import { ToastContainer, toast } from "react-toastify";
+import { marked } from "marked";
 
 function CreateMarkdown({ newMarkdownContent, setNewMarkdownContent }) {
 
@@ -24,6 +25,16 @@ function CreateMarkdown({ newMarkdownContent, setNewMarkdownContent }) {
     }
   };
 
+  const downloadHtml = () => {
+    const element = document.createElement("a");
+    const htmlContent = marked(newMarkdownContent);
+    const file = new Blob([htmlContent], { type: "text/html" });
+    element.href = URL.createObjectURL(file);
+    element.download = "markdownFile.html";
+    document.body.appendChild(element); // Required for this to work in Firefox
+    element.click();
+  };
+
   return (
     <main>
       <section className="markdown">
@@ -37,7 +48,10 @@ function CreateMarkdown({ newMarkdownContent, setNewMarkdownContent }) {
           <ReactMarkdown>{newMarkdownContent}</ReactMarkdown>
         </article>
       </section>
-      <button onClick={() => SaveData(data, email)}>Save</button>
+      <div className="button-container">
+        <button onClick={() => SaveData(data, email)}>Save</button>
+        <button onClick={downloadHtml}>Download</button>
+      </div>
     </main>
   );
 }

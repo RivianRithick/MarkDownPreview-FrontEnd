@@ -13,6 +13,7 @@ const LoginPage = ({
   newMarkdownContent,
   setNewMarkdownContent,
 }) => {
+  const [isLoading, setIsLoading] = useState(false);
   const [responseMsg, setResponseMsg] = useState("");
   const navigate = useNavigate();
 
@@ -31,6 +32,7 @@ const LoginPage = ({
 
   const onSubmit = async (values) => {
     try {
+      setIsLoading(true);
       const res = await axios.post(
         "https://markdownpreview-backend.onrender.com/api/user/login",
         values
@@ -44,10 +46,12 @@ const LoginPage = ({
       toast.success(res.data.message);
       setTimeout(() => {
         navigate("/home");
+        setIsLoading(false);
       }, 500);
     } catch (error) {
       setResponseMsg(error.response.data.message);
       toast.error(error.response.data.message);
+      setIsLoading(false);
     }
   };
 
@@ -96,8 +100,8 @@ const LoginPage = ({
                 <span className="text-danger">{formik.errors.password}</span>
               </div>
             </div>
-            <button type="submit" className="btn solid">
-              Login
+            <button type="submit" className="btn solid" disabled={isLoading}>
+              {isLoading ? "Logging in....." : "Login"}
             </button>
             <div>
               <Link to="/forgot" className="text-danger">
@@ -110,6 +114,8 @@ const LoginPage = ({
       <div class="panels-container">
         <div class="panel left-panel">
           <div class="content">
+            <h1>Welcome To Markdown Preview</h1>
+            <br />
             <h3>Create New Account?</h3>
             <br />
             <button
